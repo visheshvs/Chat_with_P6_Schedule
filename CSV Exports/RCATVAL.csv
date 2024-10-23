@@ -1,0 +1,5 @@
+rsrc_catg_id,rsrc_catg_type_id,seq_num,rsrc_catg_short_name,rsrc_catg_name,parent_rsrc_catg_id
+778,112,0,01,heavy equpiment,
+779,112,100,02,light equipment,
+782,113,100,02,concrete labour,
+784,114,0,01,rough material,

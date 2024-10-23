@@ -1,0 +1,7 @@
+proc_id,task_id,proj_id,seq_num,proc_name,complete_flag,proc_wt,complete_pct,proc_descr
+32562,106233,4680,0,carpenter,N,1,0,"<HTML><HEAD><META NAME=""""GENERATOR"""" Content=""""Microsoft DHTML Editing Control""""><TITLE></TITLE></HEAD><BODY><P>1-level of col</P><P>2- check shuter</P><P>3-leveling</P></BODY></HTML>"
+32563,106233,4680,0,steel fixer,N,1,0,"<HTML><HEAD><META NAME=""""GENERATOR"""" Content=""""Microsoft DHTML Editing Control""""><TITLE></TITLE></HEAD><BODY><P>1-define height of steel bar</P><P>2-check col str and bars</P></BODY></HTML>"
+32564,106233,4680,0,concrete,N,1,0,"<HTML><HEAD><META NAME=""""GENERATOR"""" Content=""""Microsoft DHTML Editing Control""""><TITLE></TITLE></HEAD><BODY><P>1- ordering for concrete</P></BODY></HTML>"
+32565,106236,4680,0,capenter work,N,1,0,"<HTML><HEAD><META NAME=""""GENERATOR"""" Content=""""Microsoft DHTML Editing Control""""><TITLE></TITLE></HEAD><BODY><P>1- check dimension of slab</P><P>2- leveling of slab</P><P>&nbsp;</P></BODY></HTML>"
+32566,106236,4680,0,steel fixer,N,1,0,"<HTML><HEAD><META NAME=""""GENERATOR"""" Content=""""Microsoft DHTML Editing Control""""><TITLE></TITLE></HEAD><BODY><P>1- check steel on the slab</P></BODY></HTML>"
+32567,106236,4680,0,concrete,N,1,0,"<HTML><HEAD><META NAME=""""GENERATOR"""" Content=""""Microsoft DHTML Editing Control""""><TITLE></TITLE></HEAD><BODY><P>1-ordering concrete</P></BODY></HTML>"

@@ -1,0 +1,11 @@
+cost_item_id,acct_id,pobs_id,cost_type_id,proj_id,task_id,cost_name,po_number,vendor_name,act_cost,cost_per_qty,remain_cost,target_cost,cost_load_type,auto_compute_act_flag,target_qty,qty_name,cost_descr,contract_manager_import
+19306,,,,4680,106234,nail,,,0.00,10.00,100.00,100.00,CL_Start,N,10,,,
+19307,,,,4680,106234,lunch,,,0.00,150.00,150.00,150.00,CL_End,N,1,,,
+19308,,,4,4680,106235,steel tie,,,0.00,5.00,500.00,500.00,CL_Start,N,100,,,
+19309,,,,4680,106235,lunch,,,0.00,150.00,150.00,150.00,CL_Start,N,1,,,
+19310,,,4,4680,106236,steel ties,,,0.00,5.00,750.00,750.00,CL_Start,N,150,,,
+19311,,,,4680,106236,lunch,,,0.00,150.00,150.00,150.00,CL_Start,N,1,,,
+19312,,,4,4680,106237,steel ties,,,0.00,5.00,500.00,500.00,CL_Start,N,100,,,
+19313,,,,4680,106237,lunch,,,0.00,150.00,150.00,150.00,CL_End,N,1,,,
+19314,,,4,4680,106239,steel tirs,,,0.00,5.00,500.00,500.00,CL_Start,N,100,,,
+19315,,,,4680,106239,lunch,,,0.00,150.00,150.00,150.00,CL_End,N,1,,,

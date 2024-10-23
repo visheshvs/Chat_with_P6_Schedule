@@ -1,0 +1,35 @@
+actv_code_id,parent_actv_code_id,actv_code_type_id,actv_code_name,short_name,seq_num,color
+7489,,1736,earthwork,06,5,0000FF
+7490,,1734,test project,project,0,0000FF
+7491,,1735,substructure,03,2,0000FF
+7492,,1735,supersturcture,04,3,0000FF
+7493,,1735,rough finishes,05,100,0000FF
+7494,,1735,final finishes,06,200,0000FF
+7495,,1735,mechincal works,07,300,0000FF
+7496,,1735,electrical work,08,400,0000FF
+7497,,1735,confeying system,09,500,0000FF
+7498,,1736,concrete work,07,6,0000FF
+7499,,1736,finshes,09,200,0000FF
+7500,,1736,mechincal,10,300,0000FF
+7501,,1736,electrical,11,400,0000FF
+7502,,1736,thermal,12,500,0000FF
+7503,,1736,elevator,13,600,0000FF
+7504,,1735,closeout,10,600,0000FF
+7505,,1737,underground,01,0,0000FF
+7506,,1737,basement floor,02,1,0000FF
+7507,,1737,ground floor,03,2,0000FF
+7508,,1737,1st floor,04,100,0000FF
+7509,,1737,2nd floor,05,200,0000FF
+7510,,1737,3rd floor,06,300,0000FF
+7511,,1737,roof floor,07,400,0000FF
+7512,,1737,enterance & staircase,08,500,0000FF
+7513,,1737,facades,09,600,0000FF
+7514,,1736,masonary,08,100,0000FF
+7515,,1737,all floor,10,700,0000FF
+7516,,1735,general milestone,01,0,0000FF
+7517,,1735,engineering work,02,1,0000FF
+7518,,1736,general,01,0,0000FF
+7519,,1736,civil shopdrawing,02,1,0000FF
+7520,,1736,arch shopdrwaing,03,2,0000FF
+7521,,1736,civil material,04,3,0000FF
+7522,,1736,finishing material,05,4,0000FF
