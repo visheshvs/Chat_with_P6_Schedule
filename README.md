@@ -2,7 +2,7 @@
 
 ## Description
 
-The **XER Database Query Assistant** is a tool designed to facilitate the conversion of natural language queries into SQL queries based on a given SQLite database schema. It processes multiple XER files, stores the data into separate SQLite databases, and allows users to interact with the databases using intuitive language prompts powered by OpenAI's GPT-4 model.
+The **XER Database Query Assistant** is a tool designed to facilitate the conversion of natural language queries into SQL queries based on a given SQLite database schema. It processes both XER and PDF files, stores the data into separate SQLite databases, and allows users to interact with the databases using intuitive language prompts powered by OpenAI's GPT-4 model.
 
 ## Prerequisites
 
@@ -20,11 +20,12 @@ The project relies on the following Python packages:
 - `sqlite3` (Standard library)
 - `pandas`
 - `xerparser`
+- `pdfplumber` (for PDF parsing)
 
 You can install the required packages using `pip`:
 
 ```bash
-pip install openai python-dotenv pandas xerparser
+pip install openai python-dotenv pandas xerparser pdfplumber
 ```
 
 ## Installation
@@ -64,68 +65,110 @@ The project will create the following directory structure:
 ```
 project_root/
 ├── XER_Data/           # Place your .xer files here
+├── PDF_Data/           # Place your PDF files here
 ├── Database/           # Contains generated SQLite databases
-└── CSV Exports/        # Contains exported CSV files
-    ├── project1/
-    └── project2/
+├── PDF2CSV_Original/   # Contains original parsed PDF tables
+│   ├── pdf1_name/
+│   │   ├── page_1_table_1.csv
+│   │   ├── page_1_table_2.csv
+│   │   └── ...
+│   └── pdf2_name/
+└── CSV Exports/        # Contains processed CSV files
+    ├── project1/       # XER exports
+    ├── project2/       # XER exports
+    ├── pdf1/          # PDF processed exports
+    └── pdf2/          # PDF processed exports
 ```
 
 ## Usage
 
-1. **Place XER Files**
+### 1. Processing XER Files
 
-   Place your XER files in the `XER_Data` directory. The script will process all files with the `.xer` extension.
+Place your XER files in the `XER_Data` directory and run:
 
-2. **Parse XER Files and Populate SQLite Databases**
+```bash
+python parse_xer_to_sql.py
+```
 
-   ```bash
-   python parse_xer_to_sql.py
-   ```
+### 2. Processing PDF Files
 
-   This script will:
-   - Process all XER files in the `XER_Data` directory
-   - Create separate databases for each XER file in the `Database` directory
-   - Export tables as CSV files in separate folders under `CSV Exports`
+Place your PDF files containing tables in the `PDF_Data` directory and run:
 
-3. **Run the Query Assistant**
+```bash
+python parse_pdf_to_sql.py
+```
 
-   ```bash
-   python query_with_llm.py
-   ```
+The PDF parser will:
+- Extract tables from each page of the PDF
+- Save original parsed tables in PDF2CSV_Original directory without transformations
+- Process the tables to extract standardized columns:
+  - Activity ID
+  - Activity Name
+  - Company (if exists)
+  - Original Duration (if exists)
+  - RD
+  - Start Date
+  - Finish Date
+  - Total Float (if exists)
+- Clean text data to remove formatting artifacts
+- Store processed data in both SQLite database and CSV format
+- Create separate folders for each PDF's exports
 
-   The assistant will:
-   - Show a list of available databases
-   - Let you select which database to query
-   - Accept natural language questions about the data
+The parser creates two sets of outputs:
+1. Original parsed tables (in PDF2CSV_Original directory)
+   - Preserves original table structure
+   - Minimal processing, just text cleaning
+   - Separate CSV for each table on each page
 
-   **Example Interaction:**
-   ```
-   Welcome to the XER Database Query Assistant!
+2. Processed data (in CSV Exports and Database)
+   - Standardized columns
+   - Merged tables
+   - Cleaned and formatted data
+   - Single CSV and database table per PDF
 
-   Available databases:
-   1. project1_database.db
-   2. project2_database.db
+### 3. Query the Databases
 
-   Select a database (enter the number): 1
+Run the query assistant:
 
-   Using database: project1_database.db
-   Type 'exit' to quit.
+```bash
+python query_with_llm.py
+```
 
-   Enter your question: List all tasks with their start dates.
-   
-   Generated SQL Query:
-   SELECT task_name, start_date FROM TASK;
+The assistant will:
+- Show a list of available databases (from both XER and PDF sources)
+- Let you select which database to query
+- Accept natural language questions about the data
 
-   Query Results:
-   task_name | start_date
-   ----------+------------
-   Task A    | 2023-01-15
-   Task B    | 2023-02-20
-   ```
+Example Interaction:
+```
+Welcome to the XER Database Query Assistant!
+
+Available databases:
+1. project1_database.db
+2. project2_database.db
+3. pdf1_database.db
+
+Select a database (enter the number): 1
+
+Using database: project1_database.db
+Type 'exit' to quit.
+
+Enter your question: List all tasks with their start dates.
+
+Generated SQL Query:
+SELECT task_name, start_date FROM TASK;
+
+Query Results:
+task_name | start_date
+----------+------------
+Task A    | 2023-01-15
+Task B    | 2023-02-20
+```
 
 ## Sample Files
 
-Sample XER files can be obtained from [Planning Engineer](https://planningengineer.net/tag/xer-file/).
+- XER sample files can be obtained from [Planning Engineer](https://planningengineer.net/tag/xer-file/)
+- PDF files should contain tables that can be extracted by pdfplumber
 
 ## Credits
 
