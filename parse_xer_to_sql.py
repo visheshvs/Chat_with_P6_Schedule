@@ -33,6 +33,9 @@ def parse_xer_to_sqlite_and_csv(xer_file_path, sqlite_db_path, csv_export_dir):
     """
     # Ensure the CSV export directory exists
     os.makedirs(csv_export_dir, exist_ok=True)
+    
+    # Ensure the database directory exists
+    os.makedirs(os.path.dirname(sqlite_db_path), exist_ok=True)
 
     # Parse the XER file
     try:
@@ -125,17 +128,35 @@ def main():
     # Load environment variables from .env file
     load_dotenv()
     
-    # Path to the XER file
-    xer_file = "project.xer"
+    # Define the directory containing XER files
+    xer_data_dir = os.path.join(os.getcwd(), "XER_Data")
     
-    # Path to the SQLite database
-    sqlite_db = os.path.join(os.getcwd(), "project_database.db")
+    # Ensure XER_Data directory exists
+    os.makedirs(xer_data_dir, exist_ok=True)
     
-    # Define the directory for CSV exports
-    csv_export_dir = os.path.join(os.getcwd(), "CSV Exports")
+    # Get all XER files from the directory
+    xer_files = [f for f in os.listdir(xer_data_dir) if f.lower().endswith('.xer')]
     
-    # Parse XER and store data in SQLite and export as CSV
-    parse_xer_to_sqlite_and_csv(xer_file, sqlite_db, csv_export_dir)
+    if not xer_files:
+        print("No XER files found in XER_Data directory.")
+        return
+    
+    # Process each XER file
+    for xer_file in xer_files:
+        print(f"\nProcessing {xer_file}...")
+        
+        # Full path to the XER file
+        xer_file_path = os.path.join(xer_data_dir, xer_file)
+        
+        # Create database name based on XER filename
+        db_name = f"{os.path.splitext(xer_file)[0]}_database.db"
+        sqlite_db = os.path.join(os.getcwd(), "Database", db_name)
+        
+        # Define the directory for CSV exports (separate folder for each XER file)
+        csv_export_dir = os.path.join(os.getcwd(), "CSV Exports", os.path.splitext(xer_file)[0])
+        
+        # Parse XER and store data in SQLite and export as CSV
+        parse_xer_to_sqlite_and_csv(xer_file_path, sqlite_db, csv_export_dir)
 
 if __name__ == "__main__":
     main()

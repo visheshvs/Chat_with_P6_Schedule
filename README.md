@@ -2,7 +2,7 @@
 
 ## Description
 
-The **XER Database Query Assistant** is a tool designed to facilitate the conversion of natural language queries into SQL queries based on a given SQLite database schema. It parses XER files, stores the data into a SQLite database, and allows users to interact with the database using intuitive language prompts powered by OpenAI's GPT-4 model.
+The **XER Database Query Assistant** is a tool designed to facilitate the conversion of natural language queries into SQL queries based on a given SQLite database schema. It processes multiple XER files, stores the data into separate SQLite databases, and allows users to interact with the databases using intuitive language prompts powered by OpenAI's GPT-4 model.
 
 ## Prerequisites
 
@@ -57,51 +57,78 @@ pip install openai python-dotenv pandas xerparser
    pip install -r requirements.txt
    ```
 
-   Otherwise, install the required packages individually as shown in the Prerequisites section.
+## Project Structure
+
+The project will create the following directory structure:
+
+```
+project_root/
+├── XER_Data/           # Place your .xer files here
+├── Database/           # Contains generated SQLite databases
+└── CSV Exports/        # Contains exported CSV files
+    ├── project1/
+    └── project2/
+```
 
 ## Usage
 
-1. **Parse XER File and Populate SQLite Database**
+1. **Place XER Files**
 
-   Ensure you have a sample XER file. A sample file is provided from [Planning Engineer](https://planningengineer.net/tag/xer-file/).
+   Place your XER files in the `XER_Data` directory. The script will process all files with the `.xer` extension.
+
+2. **Parse XER Files and Populate SQLite Databases**
 
    ```bash
    python parse_xer_to_sql.py
    ```
 
-   This script will parse the XER file, store the data in `project_database.db`, and export the tables as CSV files in the `CSV Exports` directory.
+   This script will:
+   - Process all XER files in the `XER_Data` directory
+   - Create separate databases for each XER file in the `Database` directory
+   - Export tables as CSV files in separate folders under `CSV Exports`
 
-2. **Run the Query Assistant**
+3. **Run the Query Assistant**
 
    ```bash
    python query_with_llm.py
    ```
 
-   - **Example Interaction:**
+   The assistant will:
+   - Show a list of available databases
+   - Let you select which database to query
+   - Accept natural language questions about the data
 
-     ```
-     Welcome to the XER Database Query Assistant!
-     Type 'exit' to quit.
+   **Example Interaction:**
+   ```
+   Welcome to the XER Database Query Assistant!
 
-     Enter your question: List all projects with their start dates.
-     
-     Generated SQL Query:
-     SELECT project_name, start_date FROM projects;
+   Available databases:
+   1. project1_database.db
+   2. project2_database.db
 
-     Query Results:
-     project_name | start_date
-     ------------+------------
-     Project A    | 2023-01-15
-     Project B    | 2023-02-20
-     ```
+   Select a database (enter the number): 1
 
-## Sample File
+   Using database: project1_database.db
+   Type 'exit' to quit.
 
-The sample XER file used in this project is sourced from [Planning Engineer](https://planningengineer.net/tag/xer-file/).
+   Enter your question: List all tasks with their start dates.
+   
+   Generated SQL Query:
+   SELECT task_name, start_date FROM TASK;
+
+   Query Results:
+   task_name | start_date
+   ----------+------------
+   Task A    | 2023-01-15
+   Task B    | 2023-02-20
+   ```
+
+## Sample Files
+
+Sample XER files can be obtained from [Planning Engineer](https://planningengineer.net/tag/xer-file/).
 
 ## Credits
 
 - **Vishesh Vikra Singh**
   - [Website](https://visheshvsingh.notion.site/)
   - [LinkedIn](https://www.linkedin.com/in/visheshvikram/)
-
