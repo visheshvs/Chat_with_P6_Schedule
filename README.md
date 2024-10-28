@@ -1,8 +1,12 @@
-# XER Database Query Assistant
+# Schedule Database Query Assistant
 
 ## Description
 
-The **XER Database Query Assistant** is a tool designed to facilitate the conversion of natural language queries into SQL queries based on a given SQLite database schema. It processes both XER and PDF files, stores the data into separate SQLite databases, and allows users to interact with the databases using intuitive language prompts powered by OpenAI's GPT-4 model.
+The **Schedule Database Query Assistant** is a tool designed to facilitate the conversion of natural language queries into SQL queries for Primavera P6 schedule data. It processes both P6 XER files and PDF schedule exports, stores the data into separate SQLite databases, and allows users to interact with the databases using intuitive language prompts powered by OpenAI's API.
+
+The tool specializes in handling:
+- Primavera P6 XER files (native P6 export format)
+- PDF exports of P6 schedules (typically activity lists or Gantt charts)
 
 ## Prerequisites
 
@@ -33,13 +37,13 @@ pip install openai python-dotenv pandas xerparser pdfplumber
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/visheshvs/Chat_with_P6_Schedule.git
    ```
 
 2. **Navigate to the Project Directory**
 
    ```bash
-   cd your-repo
+   cd Chat_with_P6_Schedule
    ```
 
 3. **Set Up Environment Variables**
@@ -135,13 +139,13 @@ python query_with_llm.py
 ```
 
 The assistant will:
-- Show a list of available databases (from both XER and PDF sources)
+- Show a list of available databases (from both P6 XER and PDF sources)
 - Let you select which database to query
 - Accept natural language questions about the data
 
 Example Interaction:
 ```
-Welcome to the XER Database Query Assistant!
+Welcome to the Schedule Database Query Assistant!
 
 Available databases:
 1. project1_database.db
@@ -167,7 +171,7 @@ Task B    | 2023-02-20
 
 ## Sample Files
 
-- XER sample files can be obtained from [Planning Engineer](https://planningengineer.net/tag/xer-file/)
+- P6 XER sample files can be obtained from [Planning Engineer](https://planningengineer.net/tag/xer-file/)
 - PDF files should contain tables that can be extracted by pdfplumber
 
 ## Credits
