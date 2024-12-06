@@ -1,3 +1,5 @@
+#Run pip3 install -r requirements.txt
+
 import os
 import json
 import pandas as pd
